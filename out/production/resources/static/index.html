@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        body {
+            width: 60%;
+            margin: 20px 20%;
+        }
+        button {
+            margin: 10px 20px 10px 0;
+        }
+        #result {
+            padding: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<label>发送方私钥</label>
+<textarea class="form-control" id="senderPrivateKey" cols="30" rows="3">-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC40b6+rkN+bjYhj26XkTI4U+zz
+zXZGqG0veQpHrcsTDQFSva1ehOVxkaIvQPDj4sSwECKdfxegYnRG68w9DtCX5duRSGULe4drkkTT
+xfCBT2F0UGx6kEMQJ0+KM2ageS8LQJ/mKRq2wQ/qmviy/ixYcoztuqfPZuI3Qs0hOLnmnJ1/zZti
+Y1g0GEAkyVRAync28Xj9t965t64FL9n1gQQIK1kIoee5FFQpJ/NdPX3kzpGAARU42tWE7Y/Vvlr/
+lOBp8sJjR6yzjGgbwRYnTKbhr/x+B4Vh4mALxd7lsqHRxaYkIGNxTwaVJ/hL9JMZXPCdR8RxjB4e
+olox9YqKtHm7AgMBAAECggEBAKtxlhnYGbAcmIZFQXfELuvlnncC72bYMoDJLWoUo77GX6XbYgm+
+CgFx8RsYiN08rOwN665iCQ60hdyMO+ef6Iwfo7B/kYw3SQXWp5Yzlci+VE7Lk/WWAT/o13YB/H98
+KtGrXyjolGlXamZc37ta4NQjXuvgLG7Op6ZPh2376ycqKaWQk4Md+jNA4Msx9UsdFL74q9Vm2hBN
+gRBKelx5aVA/tzwzkdPu9AdqabA2xXAsGwA4SD2d2ikjvh13n9KrqBRwsMFYuytkR2+IBDFokbah
+AiCtbSqCcnvKQamzUjErS2dONGw/OHFVA3LCDqNJJT4HE9fCwaQyZ10AlTOpswECgYEA3dtsbYbj
+rOHLbhFLXLC8QmKHPlFGYwVI2JQZMgsjwN7aGXhNQObtinBDcDF6J6dG5DJP8QhVYMJbMyl+yiLV
+jbaLcNEIj6A1jpvmkt/aMYflAUraZ8JaEtAoaNc3f4VMzh8oNKzXFD6i5mdLfc/8oDNK2mKZcM2X
+vMd+52xqS3sCgYEA1UMhlLk9mjhJ7FxLy7sQgZHZ0NXibm1ULDjBpq6PvE/GmdrrfvIEQidTsYW5
+QeF0mLGakZtpVhvPd0XBTK+XZnD38U8Z3IVzHk6YpXuXmkRqRQK39aUPDlqliBivJeJmjJCy1omz
+v13McSvCllAJ8gq330qsZh9Tr12LY0mvFsECgYAXdoRCFRjxCLQuANA6jkpqrubktU2/XSi2FvuP
+KlRuqmLgfLOW4JVQpczMCb+EgBFkQtnngN0erY9dms7Y69Qv95VJqiHAps3jNiOtdtUpldinSVZN
+0OUbxj3v0IsDBoL37Z2f7IOWlYU+3r/CH4P1IVeSPwlBP80DXwnRycp4DwKBgBMzyTlH+KkDOnzC
+zrxYaqMQC+nG6G2DAJo+vgkRHLYbBMnjsWKrzgBa5ClO3iB1eXcqPr2vnat4M5UMvdv2z44Uy+55
+bd2yUmw/LXVxDHSChoMSPJgstY9YUCFR/6tMmGk9uiyhF4M6oebqxsmcCVk259l+Msm7NmDK7nsR
+LmfBAoGBAJ+rs2W+0ugqS4iGw4/PASuhVPcDHGr2R2rw8qYBW+ROP7wMNhS5qHWVi7SGPnRxZD+j
+HdZ8I+v9Ydzy2HQuP+kTllaJ0Ler3LEdchFQCgepwRtW5gM9JXP8FlGMxPf8zEXqAs1CkhEIi82N
+nSnoEoOrltwLAA1YGKyfQ2ZAIbS6
+-----END PRIVATE KEY-----</textarea>
+
+<label>发送方公钥</label>
+<textarea class="form-control" id="senderPublicKey" cols="30" rows="3">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuNG+vq5Dfm42IY9ul5EyOFPs8812Rqht
+L3kKR63LEw0BUr2tXoTlcZGiL0Dw4+LEsBAinX8XoGJ0RuvMPQ7Ql+XbkUhlC3uHa5JE08XwgU9h
+dFBsepBDECdPijNmoHkvC0Cf5ikatsEP6pr4sv4sWHKM7bqnz2biN0LNITi55pydf82bYmNYNBhA
+JMlUQMp3NvF4/bfeubeuBS/Z9YEECCtZCKHnuRRUKSfzXT195M6RgAEVONrVhO2P1b5a/5TgafLC
+Y0ess4xoG8EWJ0ym4a/8fgeFYeJgC8Xe5bKh0cWmJCBjcU8GlSf4S/STGVzwnUfEcYweHqJaMfWK
+irR5uwIDAQAB</textarea>
+
+<label>接收方公钥</label>
+<textarea class="form-control" id="receiverPublicKey" cols="30" rows="3">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk3Ti2ySV0l7+4RZg2z1rGjtprwYYrrA1
+1sV7H3cvC5PUYtowTmJx22rXVj5ncw6rABAsmGgJ1JyzDub599BTVEJqtBN2VAtoZ+7oy4ASW0LW
+N027PECZxuCGGwxcTdm44do2+MPp04Lt30SJ8HYMxPR5XaoxdaciIGKUt/WJynAl0rmBi4SrBCNO
+YScwfUKu0EJg4Ru4iXwN+ZTtyydRLtK1YiyistLDa/ZjAr1LX+9TwdzGtlFNfsEB6/sEgiMFE4BO
+BFPFAy5w182wC7wmu/TbuC4BxV+HgRVBB6kFPr8i6eLlZWnH0TZRMd4qzv9qYztYHquywkb6Eg7g
+SX8zQQIDAQAB</textarea>
+
+<label>转账信息</label>
+<!--<textarea class="form-control" cols="30" rows="10"></textarea>-->
+
+<input type="text" class="form-control" id="idInput" placeholder="请输入内容"/>
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary" onclick="addGenesis()">添加封面</button>
+    <button type="button" class="btn btn-primary" onclick="addNote()">添加记录</button>
+    <button type="button" class="btn btn-primary" onclick="check()">校验数据</button>
+</div>
+
+<input type="text" class="form-control" id="idNode" placeholder="请输入节点"/>
+
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary" onclick="regist()">注册节点</button>
+    <button type="button" class="btn btn-primary" onclick="conn()">连接节点</button>
+    <button type="button" class="btn btn-primary" onclick="broadcast()">广播</button>
+    <button type="button" class="btn btn-primary" onclick="syncData()">同步数据</button>
+</div>
+
+<p class="bg-info" id="result"></p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>内容</th>
+        <th>hash值</th>
+        <th>工作量</th>
+        <th>上一个hash</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+</table>
+<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/pb.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jsrsasign-all-min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    function addGenesis() {
+        var val = $("#idInput").val();
+        $.post("addGenesis", "genesis=" + val, function (data) {
+            $("#result").html(data)
+            showList()
+            $("#idInput").val("")
+        })
+    }
+
+    function addNote2() {
+        var val = $("#idInput").val();
+        $.post("addNote", "note=" + val, function (data) {
+            $("#result").html(data)
+            showList()
+            $("#idInput").val("")
+        })
+    }
+
+    function addNote() {
+        var senderPrivateKey = $("#senderPrivateKey").val();
+        var senderPublicKey = $("#senderPublicKey").val();
+        var receiverPublicKey = $("#receiverPublicKey").val();
+        var content = $("#idInput").val();
+        // 获取私钥
+        var prvKey = KEYUTIL.getKey(senderPrivateKey);
+        // 指定算法
+        var sig = new KJUR.crypto.Signature({"alg": "SHA256withRSA"});
+        // 初始化私钥
+        sig.init(prvKey);
+        // 传入原文
+        sig.updateString(content)
+        // 生成签名
+        var sigValueHex = sig.sign()
+        console.log(sigValueHex);
+
+        $.post("addNote", {
+            receiverPublicKey: receiverPublicKey,
+            senderPublicKey: senderPublicKey,
+            signaturedData: sigValueHex,
+            content: content
+        }, function (data) {
+            $("#result").html(data)
+            showList()
+            $("#idInput").val("")
+        })
+    }
+
+    function showList() {
+        $.get("showList", function (data) {
+
+            $("#tbody").html("");
+            for (var i = 0; i < data.length; i++) {
+                var block = data[i];
+                var id = block.id;
+                var content = block.content;
+                var hash = block.hash;
+                var nonce = block.nonce;
+                var preHash = block.preHash;
+                $("#tbody").append("<tr><td>"+id+"</td><td>"+content+"</td><td>"+hash+"</td><td>"+nonce+"</td><td>"+preHash+"</td></tr>")
+            }
+        })
+    }
+
+    function check() {
+        $.get("check", function (data) {
+            $("#result").html(data)
+        })
+    }
+
+    function regist() {
+        var content = $("#idNode").val();
+        $.post("regist", "node=" + content, function (data) {
+            $("#result").html(data)
+            $("#idNode").val("")
+        })
+    }
+
+    function conn() {
+        $.get("conn", function (data) {
+            $("#result").html(data)
+        })
+    }
+
+    function broadcast() {
+        var content = $("#idNode").val();
+        $.get("broadcast", "msg=" + content, function (data) {
+            $("#result").html(data)
+            $("#idNode").val("")
+        })
+    }
+
+    function syncData() {
+        $.get("syncData", function (data) {
+            $("#result").html(data)
+        })
+    }
+
+    $(function () {
+        showList();
+    })
+
+</script>
+
+</body>
+</html>

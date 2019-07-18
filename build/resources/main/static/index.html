@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        body {
+            width: 60%;
+            margin: 20px 20%;
+        }
+        button {
+            margin: 10px 20px 10px 0;
+        }
+        #result {
+            padding: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<input type="text" class="form-control" id="idInput" placeholder="请输入内容"/>
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary" onclick="addGenesis()">添加封面</button>
+    <button type="button" class="btn btn-primary" onclick="addNote()">添加记录</button>
+    <button type="button" class="btn btn-primary" onclick="check()">校验数据</button>
+</div>
+
+<p class="bg-info" id="result"></p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>内容</th>
+        <th>hash值</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+</table>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+
+    function addGenesis() {
+        var val = $("#idInput").val();
+        $.post("addGenesis", "genesis=" + val, function (data) {
+            $("#result").html(data)
+            showList()
+            $("#idInput").val("")
+        })
+    }
+
+    function addNote() {
+        var val = $("#idInput").val();
+        $.post("addNote", "note=" + val, function (data) {
+            $("#result").html(data)
+            showList()
+            $("#idInput").val("")
+        })
+    }
+
+    function showList() {
+        $.get("showList", function (data) {
+
+            $("#tbody").html("");
+            for (var i = 0; i < data.length; i++) {
+                var block = data[i];
+                var id = block.id;
+                var content = block.content;
+                var hash = block.hash;
+                $("#tbody").append("<tr><td>"+id+"</td><td>"+content+"</td><td>"+hash+"</td></tr>")
+            }
+        })
+    }
+
+    function check() {
+        $.get("check", function (data) {
+            $("#result").html(data)
+        })
+    }
+
+    $(function () {
+        showList();
+    })
+
+</script>
+</html>
